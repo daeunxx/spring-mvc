@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +62,12 @@ public class BasicController {
     model.addAttribute("session", session);
     model.addAttribute("servletContext", request.getServletContext());
     return "basic/basic-objects";
+  }
+
+  @GetMapping("/date")
+  public String date(Model model) {
+    model.addAttribute("localDateTime", LocalDateTime.now());
+    return "/basic/date";
   }
 
   @Component("helloBean")
