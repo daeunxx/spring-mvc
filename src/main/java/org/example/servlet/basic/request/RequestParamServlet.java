@@ -40,6 +40,9 @@ public class RequestParamServlet extends HttpServlet {
     for (String name : usernames) {
       System.out.println("name = " + name);
     }
+    System.out.println();
+
+    System.out.println("request.getContentType() = " + request.getContentType());
 
     response.getWriter().write("ok");
   }
