@@ -75,6 +75,7 @@ public class RequestParamController {
   @ResponseBody
   @RequestMapping("/request-param-map")
   public String requestParamMap(@RequestParam Map<String, Object> paramMap) {
+    log.info("paramMap={}", paramMap);
     log.info("username={}, age={}", paramMap.get("username"), paramMap.get("age"));
     return "ok";
   }
