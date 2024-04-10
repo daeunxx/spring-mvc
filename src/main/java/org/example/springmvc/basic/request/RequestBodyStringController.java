@@ -42,11 +42,11 @@ public class RequestBodyStringController {
   }
 
   @PostMapping("/request-body-string-v3")
-  public HttpEntity<String> requestBodyStringV3(RequestEntity<String> requestEntity) {
+  public ResponseEntity<String> requestBodyStringV3(RequestEntity<String> requestEntity) {
     String messageBody = requestEntity.getBody();
     log.info("messageBody={}", messageBody);
 
-    return new ResponseEntity<>("ok", HttpStatus.CREATED);
+    return ResponseEntity.ok("ok");
   }
 
   @ResponseBody
