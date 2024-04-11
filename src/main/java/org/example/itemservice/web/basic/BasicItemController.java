@@ -8,6 +8,7 @@ import org.example.itemservice.domain.item.ItemRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,6 @@ public class BasicItemController {
     return "basic/addForm";
   }
 
-//  @PostMapping("/add")
   public String addItemV1(
       @RequestParam String itemName,
       @RequestParam Integer price,
@@ -58,12 +58,39 @@ public class BasicItemController {
     return "basic/item";
   }
 
-  @PostMapping("/add")
-  public String addItemV2(Item item) {
+  public String addItemV2(@ModelAttribute("item") Item item) {
     itemRepository.save(item);
-//    model.addAttribute("item", item);
-
+//    model.addAttribute("item", item)
     return "basic/item";
+  }
+
+  public String addItemV3(@ModelAttribute Item item) {
+    itemRepository.save(item);
+    return "basic/item";
+  }
+
+  public String addItemV4(Item item) {
+    itemRepository.save(item);
+    return "basic/item";
+  }
+
+  @PostMapping("/add")
+  public String addItemV5(Item item) {
+    itemRepository.save(item);
+    return "redirect:/basic/items/" + item.getId();
+  }
+  
+  @GetMapping("/{itemId}/edit")
+  public String editForm(@PathVariable Long itemId, Model model) {
+    Item item = itemRepository.findById(itemId);
+    model.addAttribute("item", item);
+    return "basic/editForm";
+  }
+
+  @PostMapping("/{itemId}/edit")
+  public String edit(@PathVariable Long itemId, Item item) {
+    itemRepository.update(itemId, item);
+    return "redirect:/basic/items/{itemId}";
   }
 
   @PostConstruct
