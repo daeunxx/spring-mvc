@@ -2,9 +2,7 @@ package hello.itemservice.web.validation;
 
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -135,7 +133,7 @@ public class ValidationItemControllerV2 {
     if (!StringUtils.hasText(item.getItemName())) {
       bindingResult.addError(
           new FieldError("item", "itemName", item.getItemName(), false,
-              new String[]{"required.item.itemName" , "required.default"}, null, null));
+              new String[]{"required.item.itemName", "required.default"}, null, null));
     }
     if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
       bindingResult.addError(
@@ -178,12 +176,18 @@ public class ValidationItemControllerV2 {
     log.info("target={}", bindingResult.getTarget());
 
     //검증 로직
+
+//    아래와 같은 로직
+//    ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "require");
+
     if (!StringUtils.hasText(item.getItemName())) {
       bindingResult.rejectValue("itemName", "required");
     }
+
     if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
       bindingResult.rejectValue("price", "range", new Object[]{1000, 1000000}, null);
     }
+
     if (item.getQuantity() == null || item.getQuantity() > 10000) {
       bindingResult.rejectValue("quantity", "max", new Object[]{9999}, null);
     }
