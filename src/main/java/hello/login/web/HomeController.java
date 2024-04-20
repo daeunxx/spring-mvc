@@ -2,8 +2,10 @@ package hello.login.web;
 
 import hello.login.domain.member.Member;
 import hello.login.domain.member.MemberRepository;
+import hello.login.web.item.session.SessionConst;
 import hello.login.web.item.session.SessionManager;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -42,7 +44,7 @@ public class HomeController {
     return "loginHome";
   }
 
-  @GetMapping("/")
+//  @GetMapping("/")
   public String homeLoginV2(HttpServletRequest request, Model model) {
 
     //세션 관리자에 저장된 회원 정보 조회
@@ -53,6 +55,27 @@ public class HomeController {
     }
 
     model.addAttribute("member", member);
+    return "loginHome";
+  }
+
+  @GetMapping("/")
+  public String homeLoginV3(HttpServletRequest request, Model model) {
+
+    //세션 관리자에 저장된 회원 정보 조회
+    HttpSession session = request.getSession(false);
+
+    if (session == null) {
+      return "home";
+    }
+
+    Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MANAGER);
+    //세션에 데이터가 없으면 home으로 이동
+    if (loginMember == null) {
+      return "home";
+    }
+
+    //세션이 유지되면 로그인으로 이동
+    model.addAttribute("member", loginMember);
     return "loginHome";
   }
 }
