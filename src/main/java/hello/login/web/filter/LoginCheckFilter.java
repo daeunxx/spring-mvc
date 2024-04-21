@@ -19,8 +19,8 @@ public class LoginCheckFilter implements Filter {
   private static final String[] whiteList = {"/", "/members/add", "/login", "/logout", "/css/*"};
 
   @Override
-  public void doFilter(ServletRequest request, ServletResponse response,
-      FilterChain filterChain) throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
 
     HttpServletRequest httpRequest = (HttpServletRequest) request;
     String requestURI = httpRequest.getRequestURI();
@@ -40,7 +40,7 @@ public class LoginCheckFilter implements Filter {
           return;
         }
       }
-      filterChain.doFilter(request, response);
+      chain.doFilter(request, response);
     } catch (Exception e) {
       throw e;
     } finally {

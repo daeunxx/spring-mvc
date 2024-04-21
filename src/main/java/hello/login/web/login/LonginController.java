@@ -119,10 +119,7 @@ public class LonginController {
     }
 
     //로그인 성공 처리
-    //세션이 있으면 세션 반환, 없으면 신규 세션 생성 -> default: request.getSession(true)
-    //세션이 있으면 세션 반환, 없으면 신규 세션 생성하지 않고 null 반환 -> request.getSession(false)
     HttpSession session = request.getSession();
-    //세션에 로그인 회원 정보 보관
     session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
     return "redirect:" + redirectURL;

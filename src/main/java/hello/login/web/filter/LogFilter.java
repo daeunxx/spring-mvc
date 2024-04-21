@@ -20,8 +20,8 @@ public class LogFilter implements Filter {
   }
 
   @Override
-  public void doFilter(ServletRequest request, ServletResponse response,
-      FilterChain filterChain) throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
     log.info("log filter doFilter");
 
     HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -32,7 +32,7 @@ public class LogFilter implements Filter {
     try {
       log.info("REQUEST [{}][{}]", uuid, requestURI);
       //다음 필터가 존재하면 필터를 호출하고 존재하지 않으면 서블릿을 호출
-      filterChain.doFilter(request, response);
+      chain.doFilter(request, response);
     } catch (Exception e) {
       throw e;
     } finally {
