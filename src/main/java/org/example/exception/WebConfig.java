@@ -3,9 +3,11 @@ package org.example.exception;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import org.example.exception.filter.LogFilter;
+import org.example.exception.interceptor.LogInterceptor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -21,4 +23,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     return filterRegistrationBean;
   }
+
+//  @Override
+//  public void addInterceptors(InterceptorRegistry registry) {
+//    registry.addInterceptor(new LogInterceptor())
+//        .order(1)
+//        .addPathPatterns("/**")
+//        .excludePathPatterns("/css/**", "/*.ico", "/error", "/error-page/**");
+//  }
 }
