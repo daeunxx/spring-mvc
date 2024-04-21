@@ -12,7 +12,7 @@ public class ServletExController {
 
   @GetMapping("/error-ex")
   public void errorEx() {
-    //런타임에러는 500에러
+    //런타임에러는 500 에러
     throw new RuntimeException("예외 발생");
   }
 
