@@ -1,6 +1,6 @@
 package hello.login.web.filter;
 
-import hello.login.web.item.session.SessionConst;
+import hello.login.web.SessionConst;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

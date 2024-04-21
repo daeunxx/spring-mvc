@@ -2,8 +2,8 @@ package hello.login.web.login;
 
 import hello.login.domain.login.LoginService;
 import hello.login.domain.member.Member;
-import hello.login.web.item.session.SessionConst;
-import hello.login.web.item.session.SessionManager;
+import hello.login.web.SessionConst;
+import hello.login.web.session.SessionManager;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -31,7 +31,7 @@ public class LonginController {
     return "login/loginForm";
   }
 
-//  @PostMapping("/login")
+  //  @PostMapping("/login")
   public String loginV1(@Validated LoginForm form, BindingResult bindingResult,
       HttpServletResponse response) {
 
@@ -55,7 +55,7 @@ public class LonginController {
     return "redirect:/";
   }
 
-//  @PostMapping("/login")
+  //  @PostMapping("/login")
   public String loginV2(@Validated LoginForm form, BindingResult bindingResult,
       HttpServletResponse response) {
 
@@ -77,7 +77,7 @@ public class LonginController {
     return "redirect:/";
   }
 
-//  @PostMapping("/login")
+  //  @PostMapping("/login")
   public String loginV3(@Validated LoginForm form, BindingResult bindingResult,
       HttpServletRequest request) {
 
@@ -128,13 +128,13 @@ public class LonginController {
     return "redirect:" + redirectURL;
   }
 
-//  @PostMapping("logout")
+  //  @PostMapping("logout")
   public String logoutV1(HttpServletResponse response) {
     expireCookie(response, "memberId");
     return "redirect:/";
   }
 
-//  @PostMapping("logout")
+  //  @PostMapping("logout")
   public String logoutV2(HttpServletRequest request) {
     sessionManager.expireSession(request);
     return "redirect:/";

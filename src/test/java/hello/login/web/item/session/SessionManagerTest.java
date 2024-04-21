@@ -4,8 +4,7 @@ package hello.login.web.item.session;
 import static org.assertj.core.api.Assertions.*;
 
 import hello.login.domain.member.Member;
-import jakarta.servlet.http.HttpServletResponse;
-import org.assertj.core.api.Assertions;
+import hello.login.web.session.SessionManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;

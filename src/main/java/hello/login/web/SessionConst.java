@@ -1,5 +1,6 @@
-package hello.login.web.item.session;
+package hello.login.web;
 
 public interface SessionConst {
+
   String LOGIN_MEMBER = "loginMember";
 }

@@ -12,23 +12,23 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class TestDataInit {
 
-    private final ItemRepository itemRepository;
-    private final MemberRepository memberRepository;
+  private final ItemRepository itemRepository;
+  private final MemberRepository memberRepository;
 
-    /**
-     * 테스트용 데이터 추가
-     */
-    @PostConstruct
-    public void init() {
-        itemRepository.save(new Item("itemA", 10000, 10));
-        itemRepository.save(new Item("itemB", 20000, 20));
+  /**
+   * 테스트용 데이터 추가
+   */
+  @PostConstruct
+  public void init() {
+    itemRepository.save(new Item("itemA", 10000, 10));
+    itemRepository.save(new Item("itemB", 20000, 20));
 
-        Member member = new Member();
-        member.setLoginId("test");
-        member.setPassword("test!");
-        member.setName("tester");
+    Member member = new Member();
+    member.setLoginId("test");
+    member.setPassword("test!");
+    member.setName("tester");
 
-        memberRepository.save(member);
-    }
+    memberRepository.save(member);
+  }
 
 }

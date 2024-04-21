@@ -1,4 +1,4 @@
-package hello.login.web.item.session;
+package hello.login.web.session;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,7 +46,7 @@ public class SessionManager {
 
   public Cookie findCookie(HttpServletRequest request, String cookieName) {
 
-    if(request.getCookies() == null) {
+    if (request.getCookies() == null) {
       return null;
     }
 

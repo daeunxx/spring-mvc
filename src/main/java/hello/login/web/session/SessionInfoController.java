@@ -1,4 +1,4 @@
-package hello.login.web.item.session;
+package hello.login.web.session;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
