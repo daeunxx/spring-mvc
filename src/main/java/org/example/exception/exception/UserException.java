@@ -1,4 +1,4 @@
-package org.example.exception.custom;
+package org.example.exception.exception;
 
 public class UserException extends RuntimeException {
 
