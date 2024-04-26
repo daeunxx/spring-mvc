@@ -16,7 +16,7 @@ public class FileStore {
   @Value("${file.dir}")
   private String fileDir;
 
-  private String getFullPath(String fileName) {
+  public String getFullPath(String fileName) {
     return fileDir + fileName;
   }
 
