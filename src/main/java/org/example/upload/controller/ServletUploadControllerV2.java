@@ -39,7 +39,7 @@ public class ServletUploadControllerV2 {
     Collection<Part> parts = request.getParts();
     log.info("parts={}", parts);
 
-    parts.forEach(part -> {
+    for (Part part : parts) {
       log.info("===== PART =====");
       log.info("name={}", part.getName());
 
@@ -53,26 +53,18 @@ public class ServletUploadControllerV2 {
       log.info("size={}", part.getSize());
 
       //데이터 읽기
-      try {
-        InputStream inputStream = part.getInputStream();
-        String body = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
-        log.info("body={}", body);
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
+      InputStream inputStream = part.getInputStream();
+      String body = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
+      log.info("body={}", body);
 
       //파일에 저장하기
       if (StringUtils.hasText(part.getSubmittedFileName())) {
         String fullPath = fileDir + part.getSubmittedFileName();
         log.info("파일 저장 fullPath={}", fullPath);
-        try {
-          part.write(fullPath);
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+        part.write(fullPath);
       }
 
-    });
+    }
 
     return "upload-form";
   }
