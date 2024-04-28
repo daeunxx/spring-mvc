@@ -19,7 +19,6 @@ public class ItemValidator implements Validator {
     Item item = (Item) target;
 
     //검증 로직
-
     if (!StringUtils.hasText(item.getItemName())) {
       errors.rejectValue("itemName", "required");
     }

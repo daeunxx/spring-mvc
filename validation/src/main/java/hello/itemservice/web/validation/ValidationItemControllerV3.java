@@ -46,7 +46,7 @@ public class ValidationItemControllerV3 {
     return "/validation/v3/addForm";
   }
 
-  @PostMapping("/add")
+//  @PostMapping("/add")
   public String addItem1(@Validated @ModelAttribute Item item, BindingResult bindingResult,
       RedirectAttributes redirectAttributes) {
 
@@ -65,7 +65,7 @@ public class ValidationItemControllerV3 {
     return "redirect:/validation/v3/items/{itemId}";
   }
 
-//  @PostMapping("/add")
+    @PostMapping("/add")
   public String addItem2(@Validated(SaveCheck.class) @ModelAttribute Item item,
       BindingResult bindingResult,
       RedirectAttributes redirectAttributes) {
@@ -92,7 +92,7 @@ public class ValidationItemControllerV3 {
     return "/validation/v3/editForm";
   }
 
-  @PostMapping("/{itemId}/edit")
+//  @PostMapping("/{itemId}/edit")
   public String edit1(@PathVariable Long itemId, @Validated @ModelAttribute Item item,
       BindingResult bindingResult) {
 
@@ -108,7 +108,7 @@ public class ValidationItemControllerV3 {
     return "redirect:/validation/v3/items/{itemId}";
   }
 
-//  @PostMapping("/{itemId}/edit")
+    @PostMapping("/{itemId}/edit")
   public String edit2(@PathVariable Long itemId,
       @Validated(UpdateCheck.class) @ModelAttribute Item item,
       BindingResult bindingResult) {

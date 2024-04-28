@@ -164,8 +164,8 @@ public class ValidationItemControllerV2 {
     if (item.getPrice() != null && item.getQuantity() != null) {
       int resultPrice = item.getPrice() * item.getQuantity();
       if (resultPrice < 10000) {
-        bindingResult.addError(new ObjectError("item", new String[]{"totalPriceMain"},
-            new Object[]{10000}, null));
+        bindingResult.addError(new ObjectError("item", new String[]{"totalPriceMin"},
+            new Object[]{10000, resultPrice}, null));
       }
     }
 
