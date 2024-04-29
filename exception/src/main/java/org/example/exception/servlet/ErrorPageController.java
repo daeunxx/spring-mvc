@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ErrorPageController {
 
   //RequestDispatcher 상수로 지정되어 있음
-  public static final String ERROR_EXCEPTION = "javax.servlet.error.exception";
+  public static final String ERROR_EXCEPTION = "jakarta.servlet.error.exception";
   public static final String ERROR_EXCEPTION_TYPE = "jakarta.servlet.error.exception_type";
   public static final String ERROR_MESSAGE = "jakarta.servlet.error.message";
   public static final String ERROR_REQUEST_URI = "jakarta.servlet.error.request_uri";
@@ -41,7 +41,7 @@ public class ErrorPageController {
   @RequestMapping(value = "/error-page/500", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Map<String, Object>> errorPage500Api(HttpServletRequest request,
       HttpServletResponse response) {
-    log.info("Api errorPate 500");
+    log.info("Api errorPage 500");
 
     Exception ex = (Exception) request.getAttribute(ERROR_EXCEPTION);
 

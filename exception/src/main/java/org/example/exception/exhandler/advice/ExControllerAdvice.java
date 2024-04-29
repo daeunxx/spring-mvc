@@ -20,7 +20,7 @@ public class ExControllerAdvice {
     return new ErrorResult("BAD", e.getMessage());
   }
 
-  //파라미터에 있다면 (UserException.class) 생략 가능
+//  @ExceptionHandler 예외 생략 가능 -> 파라미터의 예외 지정
   @ExceptionHandler
   public ResponseEntity<ErrorResult> userExceptionHandler(UserException e) {
     log.error("[exceptionHandler] ex", e);
