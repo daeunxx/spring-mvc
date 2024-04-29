@@ -2,15 +2,10 @@ package org.example.exception;
 
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
-import java.util.List;
 import org.example.exception.filter.LogFilter;
 import org.example.exception.interceptor.LogInterceptor;
-import org.example.exception.resolver.MyHandlerExceptionResolver;
-import org.example.exception.resolver.UserHandlerExceptionResolver;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -24,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
     filterRegistrationBean.setOrder(1);
     filterRegistrationBean.addUrlPatterns("/*");
     filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST);
-
+//    filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ERROR);
     return filterRegistrationBean;
   }
 
@@ -34,11 +29,12 @@ public class WebConfig implements WebMvcConfigurer {
         .order(1)
         .addPathPatterns("/**")
         .excludePathPatterns("/css/**", "/*.ico", "/error", "/error-page/**");
+//        .excludePathPatterns("/css/**", "/*.ico", "/error");
   }
 
-  @Override
-  public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
-    resolvers.add(new MyHandlerExceptionResolver());
-    resolvers.add(new UserHandlerExceptionResolver());
-  }
+//  @Override
+//  public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+//    resolvers.add(new MyHandlerExceptionResolver());
+//    resolvers.add(new UserHandlerExceptionResolver());
+//  }
 }
