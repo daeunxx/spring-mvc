@@ -46,7 +46,7 @@ public class RequestHeaderServlet extends HttpServlet {
     System.out.println("--- Headers - start ---");
 
     request.getHeaderNames().asIterator()
-            .forEachRemaining(System.out::println);
+        .forEachRemaining(System.out::println);
 
     System.out.println("--- Headers - end ---");
     System.out.println();
@@ -62,7 +62,8 @@ public class RequestHeaderServlet extends HttpServlet {
     System.out.println("[Accept-Language 편의 조회]");
     request.getLocales().asIterator()
         .forEachRemaining(locale -> System.out.println("locale = " + locale));
-    System.out.println("request.getLocale() = " + request.getLocale()); // 가장 우선순위 높은 Accept-Language
+    System.out.println(
+        "request.getLocale() = " + request.getLocale()); // 가장 우선순위 높은 Accept-Language
     System.out.println();
 
     System.out.println("[cookie 편의 조회]");

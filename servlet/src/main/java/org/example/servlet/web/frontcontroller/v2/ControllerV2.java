@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.example.servlet.web.frontcontroller.MyView;
 
 public interface ControllerV2 {
+
   MyView process(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException;
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ModelView {
+
   private String viewName;
   private Map<String, Object> model = new HashMap<>();
 

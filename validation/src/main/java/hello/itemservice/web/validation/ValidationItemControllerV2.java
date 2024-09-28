@@ -30,7 +30,7 @@ public class ValidationItemControllerV2 {
   private final ItemRepository itemRepository;
   private final ItemValidator itemValidator;
 
-  //컨트롤러에서반 바인더 적용됨
+  //컨트롤러에서만 바인더 적용됨
   @InitBinder
   public void init(WebDataBinder dataBinder) {
     log.info("init binder {}", dataBinder);

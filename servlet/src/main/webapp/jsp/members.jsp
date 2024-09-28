@@ -22,7 +22,7 @@
     <tbody>
     <%
         for (Member member : members) {
-          //PrintWrite를 약어로 out으로 쓸 수 있음
+            //PrintWrite를 약어로 out으로 쓸 수 있음
             out.write(" <tr>");
             out.write(" <td>" + member.getId() + "</td>");
             out.write(" <td>" + member.getUsername() + "</td>");
