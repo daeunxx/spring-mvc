@@ -19,7 +19,7 @@ public class MemberSaveServlet extends HttpServlet {
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String username = request.getParameter("username");
-    int age = Integer.parseInt(request.getParameter("age"));  // getParameter의 응답결과는 항상 문자
+    int age = Integer.parseInt(request.getParameter("age"));  // getParameter의 응답 결과는 항상 문자
 
     Member member = new Member(username, age);
     memberRepository.save(member);

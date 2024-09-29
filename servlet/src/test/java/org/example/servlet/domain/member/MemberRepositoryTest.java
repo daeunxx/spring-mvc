@@ -1,5 +1,7 @@
 package org.example.servlet.domain.member;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -25,7 +27,7 @@ class MemberRepositoryTest {
     // then
     Member findMember = memberRepository.findById(member.getId());
 
-    Assertions.assertThat(saveMember).isEqualTo(findMember);
+    assertThat(saveMember).isEqualTo(findMember);
   }
 
   @Test
@@ -42,8 +44,8 @@ class MemberRepositoryTest {
     List<Member> members = memberRepository.findAll();
 
     // then
-    Assertions.assertThat(members.size()).isEqualTo(2);
-    Assertions.assertThat(members).contains(member1, member2);
+    assertThat(members.size()).isEqualTo(2);
+    assertThat(members).contains(member1, member2);
   }
 
 }
