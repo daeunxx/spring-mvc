@@ -36,6 +36,7 @@ public class MappingController {
 
   /**
    * 변수명이 같으면 생략 가능
+   *
    * @PathVariable("userId") String userId
    * @PathVariable String userId
    */
