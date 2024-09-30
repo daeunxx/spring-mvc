@@ -54,15 +54,27 @@ public class RequestParamController {
     return "ok";
   }
 
+  // /request-param-required?username= -> 파라미터 이름만 있고 값이 없는 경우, 빈 문자로 통과
+  // age 값이 없을 경우, int 타입에 null 값을 넣기 때문에 IllegalStateException 발생
   @ResponseBody
-  @RequestMapping("/request-param-required")
-  public String requestParamRequired(
+  @RequestMapping("/request-param-required-primitive")
+  public String requestParamRequiredPrimitive(
+      @RequestParam(required = true) String username,
+      @RequestParam(required = false) int age) {
+    log.info("username={}, age={}", username, age);
+    return "ok";
+  }
+
+  @ResponseBody
+  @RequestMapping("/request-param-required-reference")
+  public String requestParamRequiredReference(
       @RequestParam(required = true) String username,
       @RequestParam(required = false) Integer age) {
     log.info("username={}, age={}", username, age);
     return "ok";
   }
 
+  // 빈 문자에도 defaultValue 적용
   @ResponseBody
   @RequestMapping("/request-param-default")
   public String requestParamDefault(

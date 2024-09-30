@@ -20,7 +20,7 @@ public class ResponseViewController {
     return "/response/hello";
   }
 
-  // 경로의 이름과 API url이 같으면 html 호출
+  // 경로의 이름과 API url 이 같으면 html 호출
   @RequestMapping("/response/hello")
   public void responseViewV3(Model model) {
     model.addAttribute("data", "hello-html");
