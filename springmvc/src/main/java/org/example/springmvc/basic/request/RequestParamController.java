@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class RequestParamController {
 
+  // 반환 타입이 없으면서 응답에 직접 값을 넣으면 view 조회하지 않음
   @RequestMapping("/request-param-v1")
-  public void requestParamV1(HttpServletRequest request, HttpServletResponse response)
-      throws IOException {
+  public void requestParamV1(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String username = request.getParameter("username");
     int age = Integer.parseInt(request.getParameter("age"));
 
@@ -27,8 +27,8 @@ public class RequestParamController {
     response.getWriter().write("ok");
   }
 
-  // @ResponseBody는 @RestController와 같은 역할
-  // view가 아니라 String 그대로 노출
+  // @ResponseBody 는 @RestController 와 같은 역할
+  // view 가 아니라 String 그대로 노출
   @ResponseBody
   @RequestMapping("/request-param-v2")
   public String requestParamV2(
