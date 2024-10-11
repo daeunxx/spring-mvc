@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class LonginController {
+public class LoginController {
 
   private final LoginService loginService;
   private final SessionManager sessionManager;
